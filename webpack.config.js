@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -76,7 +77,8 @@ const config = {
       analyzerMode: 'static',
       openAnalyzer: false,
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new ForkTsCheckerWebpackPlugin(),
   ].filter(Boolean),
   resolve: {
     extensions: [
